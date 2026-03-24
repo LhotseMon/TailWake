@@ -26,3 +26,7 @@ Thumbs.db
 # Claude Code personal settings
 .claude/
 .superpowers/
+
+# PyInstaller
+build/
+dist/
