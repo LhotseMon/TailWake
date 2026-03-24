@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#dae2fd",
+              "on-secondary-fixed": "#0d1c2e",
+              "primary-fixed-dim": "#bfc2ff",
+              "inverse-surface": "#283044",
+              "surface-container": "#eaedff",
+              "on-surface-variant": "#464652",
+              "on-primary-container": "#9ba1ff",
+              "error-container": "#ffdad6",
+              "on-tertiary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#bfc2ff",
+              "primary": "#141779",
+              "on-secondary-fixed-variant": "#3a485b",
+              "on-secondary-container": "#57657a",
+              "tertiary-container": "#00482f",
+              "error": "#ba1a1a",
+              "outline": "#767683",
+              "surface-dim": "#d2d9f4",
+              "secondary-fixed-dim": "#b9c7df",
+              "surface-bright": "#faf8ff",
+              "on-primary-fixed": "#01006e",
+              "on-primary-fixed-variant": "#363b98",
+              "secondary-fixed": "#d5e3fc",
+              "surface-container-highest": "#dae2fd",
+              "on-error": "#ffffff",
+              "primary-fixed": "#e0e0ff",
+              "tertiary-fixed": "#6ffbbe",
+              "on-tertiary-container": "#22c087",
+              "on-background": "#131b2e",
+              "surface-tint": "#4f54b1",
+              "secondary-container": "#d5e3fc",
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "outline-variant": "#c7c5d4",
+              "surface": "#faf8ff",
+              "surface-container-low": "#f2f3ff",
+              "surface-container-high": "#e2e7ff",
+              "on-primary": "#ffffff",
+              "primary-container": "#2d328f",
+              "on-tertiary-fixed": "#002113",
+              "tertiary-fixed-dim": "#4edea3",
+              "inverse-on-surface": "#eef0ff",
+              "on-surface": "#131b2e",
+              "secondary": "#515f74",
+              "on-tertiary-fixed-variant": "#005236",
+              "background": "#faf8ff",
+              "tertiary": "#002f1e"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-primary-gradient {
+            background: linear-gradient(135deg, #141779 0%, #2d328f 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed antialiased">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-4 bg-slate-50 dark:bg-[#13151a] h-screen w-64 border-r-0 font-['Inter'] antialiased tracking-tight text-sm">
+<div class="mb-10 px-4">
+<h1 class="text-xl font-bold tracking-tighter text-[#2d328f] dark:text-[#e0e0ff]">TailWake</h1>
+<p class="text-[10px] text-on-surface-variant/60 font-medium uppercase tracking-[0.1em]">Windows Desktop</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-[#ffffff] dark:bg-[#2d328f] text-[#2d328f] dark:text-white rounded-lg font-semibold transition-all duration-200 scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#e2e7ff] dark:hover:bg-[#1e213d] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span>Tasks</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#e2e7ff] dark:hover:bg-[#1e213d] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-[#f2f3ff] dark:bg-[#1a1c2e] rounded-xl flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="User avatar for profile section" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM7D5HN950Iq1MUz_34AtW0lTtDYqch19Mp8X9qfGVfHxockEyJ9dNXgTGSpjjmcrpTi-nrbGdG9RoQCJH1KA0OXDjxkNSY5x3753RcQWmq85efpL5mlbzppvjSCaF7tEw0jHgAorSIi2xHCyTVM3sMCxzZqrWYi6DgJEMxZS_7E134qTI8g2putU8pt8F71t4tNmp4-8WvONrWlHiX9AtGlGAULT5-b7SWVL2srd3xp7jkWnroGzGFqEwGyf7UcJiL19l4jsfFYM"/>
+</div>
+<div>
+<p class="font-semibold text-xs text-on-surface">管理员账户</p>
+<p class="text-[10px] text-on-surface-variant">设备: WIN-ARCH-01</p>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar Shell -->
+<header class="flex justify-end items-center px-8 gap-6 h-16 w-full bg-transparent backdrop-blur-xl font-['Inter'] font-medium text-xs uppercase tracking-[0.05em] sticky top-0 z-50">
+<div class="flex items-center gap-6">
+<button class="text-slate-400 dark:text-slate-500 hover:opacity-80 transition-opacity flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="sensors">sensors</span>
+<span>网络状态</span>
+</button>
+<button class="text-slate-400 dark:text-slate-500 hover:opacity-80 transition-opacity flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="sync">sync</span>
+<span>同步中</span>
+</button>
+<button class="text-slate-400 dark:text-slate-500 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Content Body -->
+<div class="px-10 py-8 max-w-7xl mx-auto space-y-12">
+<!-- Bento Hero Section: Core Status -->
+<section class="grid grid-cols-12 gap-6">
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-8 rounded-xl flex flex-col justify-between min-h-[320px] relative overflow-hidden group">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+<span class="text-label-sm font-bold uppercase tracking-widest text-on-tertiary-container">系统当前运行状态</span>
+</div>
+<h2 class="text-[3.5rem] font-extrabold leading-tight tracking-tighter text-on-background">
+                            保持唤醒状态：开启
+                        </h2>
+<p class="text-on-surface-variant max-w-md mt-4 body-md">
+                            自动睡眠已禁用。该设备将持续响应 Tailscale 网络请求并保持节点活跃。
+                        </p>
+</div>
+<div class="flex items-center gap-4 mt-8 relative z-10">
+<button class="bg-primary-gradient text-white px-8 py-3 rounded-md font-semibold text-sm shadow-lg shadow-primary/20 flex items-center gap-2">
+<span>立即禁用</span>
+<span class="material-symbols-outlined text-sm" data-icon="power_settings_new">power_settings_new</span>
+</button>
+<button class="bg-surface-container-high text-primary px-8 py-3 rounded-md font-semibold text-sm transition-all hover:bg-surface-container-highest">
+                            运行计划设置
+                        </button>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-primary-container/5 rounded-full blur-3xl group-hover:bg-primary-container/10 transition-all duration-700"></div>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-primary-container text-on-primary-container p-8 rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="font-bold text-xs tracking-widest uppercase">网络节点信息</span>
+</div>
+<div class="space-y-6">
+<div>
+<p class="text-primary-fixed-dim text-[10px] uppercase font-bold tracking-wider">Tailscale IPv4</p>
+<p class="text-2xl font-mono font-bold text-white tracking-tight">100.82.145.21</p>
+</div>
+<div>
+<p class="text-primary-fixed-dim text-[10px] uppercase font-bold tracking-wider">加密隧道状态</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-sm" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<p class="text-lg font-medium text-white">WireGuard 活跃</p>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-white/10 mt-auto">
+<div class="flex justify-between items-center text-xs">
+<span class="opacity-70">最后握手: 2分钟前</span>
+<span class="px-2 py-1 bg-white/10 rounded uppercase font-bold text-[9px]">内网在线</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Actions Section -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-bold tracking-tight text-on-background">快速操作</h3>
+<div class="h-px flex-1 mx-6 bg-outline-variant/15"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Action Card 1 -->
+<div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-high transition-all cursor-pointer group border border-transparent hover:border-outline-variant/30">
+<div class="w-12 h-12 bg-surface-container-lowest rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="bolt">bolt</span>
+</div>
+<h4 class="font-bold text-on-surface mb-1">立即保持唤醒</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">一键覆盖系统设置，防止任何形式的休眠进入。</p>
+</div>
+<!-- Action Card 2 -->
+<div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-high transition-all cursor-pointer group border border-transparent hover:border-outline-variant/30">
+<div class="w-12 h-12 bg-surface-container-lowest rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="nights_stay">nights_stay</span>
+</div>
+<h4 class="font-bold text-on-surface mb-1">正常睡眠模式</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">恢复系统默认电源策略，允许设备在空闲时进入低功耗。</p>
+</div>
+<!-- Action Card 3 -->
+<div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-high transition-all cursor-pointer group border border-transparent hover:border-outline-variant/30">
+<div class="w-12 h-12 bg-surface-container-lowest rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="calendar_month">calendar_month</span>
+</div>
+<h4 class="font-bold text-on-surface mb-1">定时任务设置</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">配置基于时间的自动唤醒逻辑，如工作时间保持活跃。</p>
+</div>
+<!-- Action Card 4 -->
+<div class="bg-surface-container-low p-6 rounded-xl hover:bg-surface-container-high transition-all cursor-pointer group border border-transparent hover:border-outline-variant/30">
+<div class="w-12 h-12 bg-surface-container-lowest rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="settings_input_component">settings_input_component</span>
+</div>
+<h4 class="font-bold text-on-surface mb-1">节点配置</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">管理当前设备的 Tailscale 鉴权密钥与子网路由设置。</p>
+</div>
+</div>
+</section>
+<!-- Statistics & History -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Running History Chart -->
+<div class="lg:col-span-2 bg-surface-container-low p-8 rounded-xl flex flex-col">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-lg font-bold text-on-background">运行时间历史</h3>
+<p class="text-xs text-on-surface-variant">过去 7 天的活跃小时统计</p>
+</div>
+<select class="bg-transparent border-none text-xs font-bold text-primary focus:ring-0 uppercase tracking-widest cursor-pointer">
+<option>最近一周</option>
+<option>最近一月</option>
+</select>
+</div>
+<div class="flex-1 flex items-end justify-between gap-4 h-48 px-2">
+<!-- Bar chart simulation -->
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-surface-container-high rounded-t-md h-[40%] group-hover:bg-primary/20 transition-colors relative">
+<div class="absolute bottom-0 w-full bg-primary-container h-full rounded-t-md opacity-20"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">周一</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-surface-container-high rounded-t-md h-[65%] group-hover:bg-primary/20 transition-colors relative">
+<div class="absolute bottom-0 w-full bg-primary-container h-full rounded-t-md opacity-30"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">周二</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-surface-container-high rounded-t-md h-[55%] group-hover:bg-primary/20 transition-colors relative">
+<div class="absolute bottom-0 w-full bg-primary-container h-full rounded-t-md opacity-25"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">周三</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-surface-container-high rounded-t-md h-[90%] group-hover:bg-primary/20 transition-colors relative">
+<div class="absolute bottom-0 w-full bg-primary h-full rounded-t-md shadow-lg shadow-primary/10"></div>
+</div>
+<span class="text-[10px] font-bold text-on-background uppercase tracking-tighter">周四</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-surface-container-high rounded-t-md h-[70%] group-hover:bg-primary/20 transition-colors relative">
+<div class="absolute bottom-0 w-full bg-primary-container h-full rounded-t-md opacity-40"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">周五</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-surface-container-high rounded-t-md h-[85%] group-hover:bg-primary/20 transition-colors relative">
+<div class="absolute bottom-0 w-full bg-primary-container h-full rounded-t-md opacity-50"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">周六</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-surface-container-high rounded-t-md h-[80%] group-hover:bg-primary/20 transition-colors relative">
+<div class="absolute bottom-0 w-full bg-primary-container h-full rounded-t-md opacity-45"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">周日</span>
+</div>
+</div>
+</div>
+<!-- Session Stats -->
+<div class="space-y-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary bg-primary-fixed p-2 rounded-lg" data-icon="timer">timer</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-tertiary-container bg-tertiary-fixed px-2 py-1 rounded">活跃中</span>
+</div>
+<p class="text-xs text-on-surface-variant font-medium uppercase tracking-wider mb-1">唤醒总时长</p>
+<h4 class="text-3xl font-extrabold text-on-background tracking-tighter">142h 15m</h4>
+<div class="mt-4 w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[75%] rounded-full"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-tertiary-container bg-tertiary-fixed-dim p-2 rounded-lg" data-icon="cloud_done">cloud_done</span>
+</div>
+<p class="text-xs text-on-surface-variant font-medium uppercase tracking-wider mb-1">网络在线率</p>
+<h4 class="text-3xl font-extrabold text-on-background tracking-tighter">99.98%</h4>
+<p class="text-[10px] mt-2 text-on-tertiary-fixed-variant font-semibold">自系统部署以来无断线记录</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual Confirmation/Task Layer (Bottom) -->
+<div class="fixed bottom-8 left-72 right-8 pointer-events-none flex justify-center">
+<div class="bg-on-background/95 backdrop-blur-md text-white px-6 py-4 rounded-full flex items-center gap-6 shadow-2xl pointer-events-auto border border-white/10">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed-dim shadow-[0_0_10px_#4edea3]"></div>
+<span class="text-sm font-medium">TailWake 核心守护进程运行正常</span>
+</div>
+<div class="w-px h-4 bg-white/20"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="history">history</span>
+<span class="text-xs opacity-70">下一次自动休眠检查: 14:00</span>
+</div>
+</div>
+</div>
+</body></html>

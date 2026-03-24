@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TailWake - 自动化任务列表</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-variant": "#dae2fd",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "primary-fixed-dim": "#bfc2ff",
+                        "inverse-surface": "#283044",
+                        "surface-container": "#eaedff",
+                        "on-surface-variant": "#464652",
+                        "on-primary-container": "#9ba1ff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#bfc2ff",
+                        "primary": "#141779",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "on-secondary-container": "#57657a",
+                        "tertiary-container": "#00482f",
+                        "error": "#ba1a1a",
+                        "outline": "#767683",
+                        "surface-dim": "#d2d9f4",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "surface-bright": "#faf8ff",
+                        "on-primary-fixed": "#01006e",
+                        "on-primary-fixed-variant": "#363b98",
+                        "secondary-fixed": "#d5e3fc",
+                        "surface-container-highest": "#dae2fd",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#e0e0ff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-tertiary-container": "#22c087",
+                        "on-background": "#131b2e",
+                        "surface-tint": "#4f54b1",
+                        "secondary-container": "#d5e3fc",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c7c5d4",
+                        "surface": "#faf8ff",
+                        "surface-container-low": "#f2f3ff",
+                        "surface-container-high": "#e2e7ff",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#2d328f",
+                        "on-tertiary-fixed": "#002113",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-surface": "#131b2e",
+                        "secondary": "#515f74",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "background": "#faf8ff",
+                        "tertiary": "#002f1e"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "1rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-glow {
+            box-shadow: 0 0 20px rgba(78, 222, 163, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-primary">
+<!-- Sidebar Shell (JSON: SideNavBar) -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-slate-50 dark:bg-[#13151a] flex flex-col p-4 z-50">
+<div class="mb-10 px-4">
+<h1 class="text-xl font-bold tracking-tighter text-[#2d328f] dark:text-[#e0e0ff]">TailWake</h1>
+<p class="text-[10px] uppercase tracking-widest text-secondary font-semibold opacity-60">Windows Desktop</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#e2e7ff] dark:hover:bg-[#1e213d] transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-[#ffffff] dark:bg-[#2d328f] text-[#2d328f] dark:text-white rounded-lg font-semibold transition-all duration-200 shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in" style="font-variation-settings: 'FILL' 1;">assignment_turned_in</span>
+<span class="text-sm font-medium">Tasks</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#e2e7ff] dark:hover:bg-[#1e213d] transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-surface-container-low rounded-xl flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white font-bold">U</div>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate">User Profile</p>
+<p class="text-[10px] text-secondary truncate">Administrator</p>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- Top Navigation Bar (JSON: TopNavBar) -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-transparent backdrop-blur-xl flex justify-end items-center px-8 gap-6 z-40">
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-[#2d328f] cursor-pointer hover:opacity-80 transition-opacity" data-icon="sensors">sensors</span>
+<span class="material-symbols-outlined text-[#2d328f] cursor-pointer hover:opacity-80 transition-opacity" data-icon="sync">sync</span>
+<span class="material-symbols-outlined text-[#2d328f] cursor-pointer hover:opacity-80 transition-opacity" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<div class="pt-24 px-12 pb-12">
+<!-- Header Section -->
+<div class="mb-12 flex justify-between items-end">
+<div>
+<h2 class="text-3xl font-extrabold tracking-tight text-on-background mb-2">自动化任务列表</h2>
+<p class="text-secondary text-sm font-medium">管理您的桌面自动化策略与系统常驻任务</p>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:opacity-90 transition-all shadow-lg active:scale-[0.98]">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+<span>添加新任务</span>
+</button>
+</div>
+<!-- Tasks Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Task Card 1: 工作时间 -->
+<div class="group bg-surface-container-lowest rounded-lg p-6 border-b-2 border-transparent hover:border-tertiary-fixed-dim transition-all duration-300 shadow-[0_4px_20px_rgba(19,27,46,0.02)] flex flex-col justify-between h-64">
+<div class="flex justify-between items-start">
+<div class="p-3 bg-surface-container-low rounded-xl">
+<span class="material-symbols-outlined text-primary" data-icon="visibility">visibility</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-tertiary-fixed-dim"></div>
+</label>
+</div>
+<div class="mt-4">
+<h3 class="text-lg font-bold text-on-surface mb-1">工作时间</h3>
+<div class="flex items-center gap-2 text-secondary mb-4">
+<span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span>
+<span class="text-xs font-medium uppercase tracking-wider">09:00 - 18:00 | 周一至周五</span>
+</div>
+<div class="bg-surface-container-low px-3 py-2 rounded-lg inline-flex items-center gap-2">
+<span class="text-xs font-bold text-primary">动作:</span>
+<span class="text-xs text-on-surface-variant">防止休眠</span>
+</div>
+</div>
+<div class="mt-6 flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-secondary hover:text-primary hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-secondary hover:text-error hover:bg-error-container rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Task Card 2: 同步备份 -->
+<div class="group bg-surface-container-lowest rounded-lg p-6 border-b-2 border-transparent hover:border-tertiary-fixed-dim transition-all duration-300 shadow-[0_4px_20px_rgba(19,27,46,0.02)] flex flex-col justify-between h-64">
+<div class="flex justify-between items-start">
+<div class="p-3 bg-surface-container-low rounded-xl">
+<span class="material-symbols-outlined text-primary" data-icon="cloud_sync">cloud_sync</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-tertiary-fixed-dim"></div>
+</label>
+</div>
+<div class="mt-4">
+<h3 class="text-lg font-bold text-on-surface mb-1">同步备份</h3>
+<div class="flex items-center gap-2 text-secondary mb-4">
+<span class="material-symbols-outlined text-xs" data-icon="update">update</span>
+<span class="text-xs font-medium uppercase tracking-wider">02:00 - 03:00 | 每日</span>
+</div>
+<div class="bg-surface-container-low px-3 py-2 rounded-lg inline-flex items-center gap-2">
+<span class="text-xs font-bold text-primary">动作:</span>
+<span class="text-xs text-on-surface-variant">云端同步</span>
+</div>
+</div>
+<div class="mt-6 flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-secondary hover:text-primary hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-secondary hover:text-error hover:bg-error-container rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Task Card 3: 开发者模式 -->
+<div class="group bg-surface-container-lowest rounded-lg p-6 border-b-2 border-transparent hover:border-tertiary-fixed-dim transition-all duration-300 shadow-[0_4px_20px_rgba(19,27,46,0.02)] flex flex-col justify-between h-64">
+<div class="flex justify-between items-start">
+<div class="p-3 bg-surface-container-low rounded-xl">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-tertiary-fixed-dim"></div>
+</label>
+</div>
+<div class="mt-4">
+<div class="flex items-center gap-2 mb-1">
+<h3 class="text-lg font-bold text-on-surface">开发者模式</h3>
+<span class="text-[10px] bg-outline-variant/20 px-1.5 py-0.5 rounded text-secondary font-bold">已禁用</span>
+</div>
+<div class="flex items-center gap-2 text-secondary mb-4">
+<span class="material-symbols-outlined text-xs" data-icon="calendar_today">calendar_today</span>
+<span class="text-xs font-medium uppercase tracking-wider">08:00 - 20:00 | 周一至周五</span>
+</div>
+<div class="bg-surface-container-low px-3 py-2 rounded-lg inline-flex items-center gap-2">
+<span class="text-xs font-bold text-primary">动作:</span>
+<span class="text-xs text-on-surface-variant">保持终端活跃</span>
+</div>
+</div>
+<div class="mt-6 flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-secondary hover:text-primary hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-secondary hover:text-error hover:bg-error-container rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Empty State / Add Task Placeholder -->
+<div class="border-2 border-dashed border-outline-variant/40 rounded-lg flex flex-col items-center justify-center p-6 h-64 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center text-outline group-hover:scale-110 transition-transform mb-4">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</div>
+<p class="text-sm font-semibold text-secondary">新建自动化策略</p>
+<p class="text-[10px] text-outline mt-1">点击定义新的时间规则</p>
+</div>
+</div>
+<!-- Stats Layer (Visual Depth) -->
+<div class="mt-16 grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-tertiary-fixed-dim shadow-sm">
+<p class="text-[10px] font-bold uppercase tracking-widest text-secondary mb-1">活跃任务</p>
+<p class="text-2xl font-extrabold text-on-background">02 <span class="text-xs font-medium text-secondary">/ 03</span></p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary shadow-sm">
+<p class="text-[10px] font-bold uppercase tracking-widest text-secondary mb-1">下次执行</p>
+<p class="text-2xl font-extrabold text-on-background">02:00 <span class="text-xs font-medium text-secondary">AM</span></p>
+</div>
+<div class="md:col-span-2 bg-gradient-to-br from-[#131b2e] to-[#2d328f] p-6 rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-primary-container mb-1">系统状态</p>
+<div class="flex items-center gap-4">
+<div class="h-2 w-32 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed-dim w-[65%]"></div>
+</div>
+<span class="text-white text-lg font-bold">运行稳定</span>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl text-white opacity-5" data-icon="auto_awesome">auto_awesome</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button for Mobile / Small windows (Hidden on desktop sidebar layout) -->
+<div class="fixed bottom-8 right-8 md:hidden">
+<button class="w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</body></html>

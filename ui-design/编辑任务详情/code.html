@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#002f1e",
+              "on-primary-fixed-variant": "#363b98",
+              "surface-container-highest": "#dae2fd",
+              "surface-container": "#eaedff",
+              "outline-variant": "#c7c5d4",
+              "outline": "#767683",
+              "surface-container-high": "#e2e7ff",
+              "primary-fixed-dim": "#bfc2ff",
+              "inverse-primary": "#bfc2ff",
+              "on-error": "#ffffff",
+              "inverse-on-surface": "#eef0ff",
+              "primary-container": "#2d328f",
+              "on-tertiary-fixed": "#002113",
+              "on-background": "#131b2e",
+              "primary": "#141779",
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed-variant": "#005236",
+              "error": "#ba1a1a",
+              "secondary-fixed-dim": "#b9c7df",
+              "error-container": "#ffdad6",
+              "on-secondary-fixed": "#0d1c2e",
+              "on-surface": "#131b2e",
+              "surface-tint": "#4f54b1",
+              "surface": "#faf8ff",
+              "on-secondary-fixed-variant": "#3a485b",
+              "secondary": "#515f74",
+              "tertiary-fixed-dim": "#4edea3",
+              "on-secondary-container": "#57657a",
+              "inverse-surface": "#283044",
+              "on-primary-container": "#9ba1ff",
+              "secondary-container": "#d5e3fc",
+              "on-surface-variant": "#464652",
+              "primary-fixed": "#e0e0ff",
+              "surface-variant": "#dae2fd",
+              "background": "#faf8ff",
+              "on-tertiary": "#ffffff",
+              "tertiary-container": "#00482f",
+              "surface-container-low": "#f2f3ff",
+              "secondary-fixed": "#d5e3fc",
+              "surface-dim": "#d2d9f4",
+              "on-tertiary-container": "#22c087",
+              "on-primary-fixed": "#01006e",
+              "surface-bright": "#faf8ff",
+              "tertiary-fixed": "#6ffbbe",
+              "on-secondary": "#ffffff",
+              "on-primary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "1rem", "xl": "1.25rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c7c5d4; border-radius: 10px; }
+        .glass-panel {
+            background: rgba(242, 243, 255, 0.6);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-hidden">
+<!-- Shell Layout Wrapper -->
+<div class="flex h-screen w-full">
+<!-- SideNavBar (Authority: Shared Components JSON) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-4 h-screen w-64 bg-slate-50 dark:bg-[#13151a] font-['Inter'] antialiased tracking-tight text-sm z-50">
+<div class="flex items-center gap-3 mb-10 px-2">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">bolt</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xl font-bold tracking-tighter text-[#2d328f] dark:text-[#e0e0ff]">TailWake</span>
+<span class="text-[10px] uppercase tracking-widest text-slate-400">Windows Desktop</span>
+</div>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<!-- Inactive: Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#e2e7ff] dark:hover:bg-[#1e213d] transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Active: Tasks (Semantic Mapping: Editing a Task) -->
+<a class="flex items-center gap-3 px-4 py-3 bg-[#ffffff] dark:bg-[#2d328f] text-[#2d328f] dark:text-white rounded-lg font-semibold transition-all duration-200 shadow-sm scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span>Tasks</span>
+</a>
+<!-- Inactive: Settings -->
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#e2e7ff] dark:hover:bg-[#1e213d] transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/10 flex items-center gap-3 px-2">
+<img alt="User Profile" class="w-10 h-10 rounded-full border-2 border-surface-container-high" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZlT9hmYLfclU5kuEdi8LxJp_ru_6cvG6NFcZ43v89a5_vMI9NHKRkyukJ4b8TrTg7MDRE--h0swFKCLTEAl9xLcMrSBgM289r7-AYkNCX_nSuIGnY0yu6PMGwXcms_RpsUvtZmT6myg1XLSatZ9HidjA2-ZD3qeDRyma5JmD7VhjwyURR9t7kgmo7jgzrldSFkVpIMfC8iB_eNIRnwyRpsNwJNGtVmiNLwyrCAjDBvUe0e40A7eTazizf7-PGQkZi1DHW3iFjVBw"/>
+<div class="flex flex-col overflow-hidden">
+<span class="font-bold text-on-surface truncate">Admin User</span>
+<span class="text-xs text-on-surface-variant truncate">Premium Account</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-grow ml-64 bg-surface relative flex flex-col overflow-hidden">
+<!-- TopNavBar (Authority: Shared Components JSON) -->
+<header class="flex justify-end items-center px-8 gap-6 h-16 w-full bg-transparent backdrop-blur-xl z-40">
+<div class="flex items-center gap-6">
+<button class="text-slate-400 dark:text-slate-500 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+</button>
+<button class="text-slate-400 dark:text-slate-500 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</button>
+<button class="text-slate-400 dark:text-slate-500 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<div class="flex-grow overflow-y-auto custom-scrollbar px-12 pb-20">
+<!-- Page Header Section -->
+<div class="mb-12 mt-4">
+<h1 class="text-4xl font-extrabold tracking-tight text-on-background mb-2">编辑任务详情</h1>
+<p class="text-on-secondary-container text-lg max-w-2xl">配置您的桌面自动化策略与系统常驻任务</p>
+</div>
+<!-- Form Bento Grid -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Main Config Card -->
+<div class="col-span-12 lg:col-span-8 space-y-6">
+<div class="bg-surface-container-lowest rounded-lg p-8 ring-1 ring-outline-variant/10 shadow-[0_12_40px_rgba(19,27,46,0.04)]">
+<h2 class="text-title-lg font-bold text-primary mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+                                基本配置
+                            </h2>
+<div class="space-y-8">
+<!-- Input Field -->
+<div class="group">
+<label class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-3">任务名称</label>
+<input class="w-full bg-surface-container-highest border-none rounded-md px-4 py-4 focus:ring-0 focus:bg-surface-container-lowest border-b-2 border-transparent focus:border-surface-tint transition-all duration-200 text-on-surface font-medium" placeholder="输入任务识别名称..." type="text" value="深夜系统维护脚本"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Time Picker Simulation -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-3">触发时间</label>
+<div class="flex items-center gap-2 bg-surface-container-highest rounded-md p-2 ring-1 ring-outline-variant/5">
+<div class="flex-grow flex items-center justify-center py-2 px-4 bg-surface-container-lowest rounded shadow-sm text-2xl font-mono font-bold text-primary">02</div>
+<span class="font-bold text-primary">:</span>
+<div class="flex-grow flex items-center justify-center py-2 px-4 bg-surface-container-lowest rounded shadow-sm text-2xl font-mono font-bold text-primary">30</div>
+<div class="flex-grow flex items-center justify-center py-2 px-4 bg-surface-container-lowest rounded shadow-sm text-sm font-bold text-primary">AM</div>
+<button class="p-2 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined">schedule</span>
+</button>
+</div>
+</div>
+<!-- Power Action Dropdown -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-3">电源动作 (Power Action)</label>
+<div class="relative">
+<select class="w-full bg-surface-container-highest border-none rounded-md px-4 py-4 appearance-none focus:ring-0 text-on-surface font-medium cursor-pointer">
+<option>Prevent Sleep (阻止睡眠)</option>
+<option selected="">Normal Sleep (正常休眠)</option>
+<option>Shut Down (强制关机)</option>
+<option>Reboot (重启系统)</option>
+</select>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Repeat Cycle Toggles -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-4">重复周期 (Repeat Cycle)</label>
+<div class="flex flex-wrap gap-3">
+<!-- Days Toggle Buttons -->
+<button class="w-12 h-12 rounded-full flex items-center justify-center bg-primary text-white font-bold transition-all shadow-md">一</button>
+<button class="w-12 h-12 rounded-full flex items-center justify-center bg-primary text-white font-bold transition-all shadow-md">二</button>
+<button class="w-12 h-12 rounded-full flex items-center justify-center bg-primary text-white font-bold transition-all shadow-md">三</button>
+<button class="w-12 h-12 rounded-full flex items-center justify-center bg-primary text-white font-bold transition-all shadow-md">四</button>
+<button class="w-12 h-12 rounded-full flex items-center justify-center bg-primary text-white font-bold transition-all shadow-md">五</button>
+<button class="w-12 h-12 rounded-full flex items-center justify-center bg-surface-container-high text-on-surface-variant font-bold hover:bg-surface-container-highest transition-all">六</button>
+<button class="w-12 h-12 rounded-full flex items-center justify-center bg-surface-container-high text-on-surface-variant font-bold hover:bg-surface-container-highest transition-all">日</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Info Cards -->
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<!-- Device Info Read-Only -->
+<div class="bg-surface-container-low border border-outline-variant/15 rounded-lg p-6">
+<h3 class="text-xs font-bold uppercase tracking-[0.1em] text-on-surface-variant mb-6 flex items-center justify-between">
+                                目标设备信息
+                                <span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+</h3>
+<div class="space-y-5">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant/70 mb-1">NODE IP ADDRESS</span>
+<span class="font-mono text-primary font-bold">192.168.1.104</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant/70 mb-1">DEVICE STATUS</span>
+<div class="flex items-center gap-2">
+<span class="text-on-surface font-semibold">Active &amp; Connected</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant/70 mb-1">SYSTEM VERSION</span>
+<span class="text-on-surface font-semibold">Win11 Pro 22H2</span>
+</div>
+<div class="pt-4 mt-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-3 p-3 bg-surface-container-lowest rounded-md">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-xs text-on-surface-variant leading-tight">此节点已通过 TailWake 安全验证，支持所有高级自动化命令。</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Tip Card -->
+<div class="bg-gradient-to-br from-primary to-primary-container rounded-lg p-6 text-white shadow-lg overflow-hidden relative">
+<div class="relative z-10">
+<span class="material-symbols-outlined mb-4 opacity-80">lightbulb</span>
+<h4 class="font-bold mb-2">专业提示</h4>
+<p class="text-xs text-white/80 leading-relaxed">
+                                    启用 "Prevent Sleep" 可以确保您的远程渲染或大规模数据下载任务不会因系统进入待机而中断。
+                                </p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-8xl">bolt</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Actions (Modern Desktop style) -->
+<div class="mt-12 flex items-center justify-end gap-4 pb-10">
+<button class="px-8 py-3 rounded-md font-bold text-primary hover:bg-surface-container-high transition-colors ring-1 ring-primary/20">
+                        取消
+                    </button>
+<button class="px-10 py-3 rounded-md font-bold text-white bg-gradient-to-r from-primary to-primary-container shadow-[0_8px_24px_rgba(45,50,143,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all">
+                        保存任务
+                    </button>
+</div>
+</div>
+</main>
+</div>
+</body></html>
