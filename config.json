@@ -1,0 +1,63 @@
+{
+    "countdown_seconds": 12,
+    "restore_sleep_minutes": 20,
+    "autostart": false,
+    "track_history": false,
+    "tasks": [
+        {
+            "id": "13f6d64a-b25f-4f94-8ec9-424ae2e522dc",
+            "name": "防止休眠",
+            "icon": "schedule",
+            "task_type": "fixed",
+            "trigger_time": "17:21",
+            "trigger_days": null,
+            "interval_minutes": null,
+            "action": "prevent_sleep",
+            "enabled": false
+        },
+        {
+            "id": "27769adb-4771-425b-8bc0-1aeb5bc9e24a",
+            "name": "恢复休眠",
+            "icon": "schedule",
+            "task_type": "fixed",
+            "trigger_time": "17:23",
+            "trigger_days": null,
+            "interval_minutes": null,
+            "action": "restore_sleep",
+            "enabled": false
+        },
+        {
+            "id": "97e2f185-591f-4449-a3de-0192b3ff66d1",
+            "name": "为我",
+            "icon": "schedule",
+            "task_type": "fixed",
+            "trigger_time": "02:30",
+            "trigger_days": null,
+            "interval_minutes": null,
+            "action": "prevent_sleep",
+            "enabled": true
+        },
+        {
+            "id": "7975ed43-349f-4fa2-afec-7597705b27cf",
+            "name": "1",
+            "icon": "schedule",
+            "task_type": "fixed",
+            "trigger_time": "02:30",
+            "trigger_days": null,
+            "interval_minutes": null,
+            "action": "prevent_sleep",
+            "enabled": true
+        },
+        {
+            "id": "dac56104-dbab-4a82-b434-429153e93ca3",
+            "name": "2",
+            "icon": "schedule",
+            "task_type": "fixed",
+            "trigger_time": "02:30",
+            "trigger_days": null,
+            "interval_minutes": null,
+            "action": "prevent_sleep",
+            "enabled": true
+        }
+    ]
+}

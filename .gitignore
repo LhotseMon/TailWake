@@ -1,6 +1,6 @@
 # Personal configuration files
-config.json
-history.json
+# config.json
+# history.json
 
 # Python cache
 __pycache__/
